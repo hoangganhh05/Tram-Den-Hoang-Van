@@ -121,7 +121,7 @@
         <td>${o.date}</td>
         <td class="text-bold">${o.name}</td>
         <td>${o.phone}</td>
-        <td>${o.address}</td>
+        <td>${o.address}, ${o.district}, ${o.city}${o.note ? `<br/><small><em>Ghi chú: ${o.note}</em></small>` : ""}</td>
         <td>${o.product}</td>
         <td style="text-align:center;font-weight:700;">${o.qty}</td>
         <td class="text-gold">${o.total.toLocaleString('vi-VN')}đ</td>
@@ -153,7 +153,8 @@
     // Ghi từng dòng dữ liệu
     allOrders.forEach(o => {
       // Dọn dẹp thẻ html (<br/>) trong địa chỉ biến thành chuỗi text
-      let cleanAddress = o.address.replace(/<[^>]*>?/gm, ' - ').replace(/"/g, '""');
+      let fullAddress = `${o.address}, ${o.district}, ${o.city}${o.note ? ` - Ghi chú: ${o.note}` : ""}`;
+      let cleanAddress = fullAddress.replace(/<[^>]*>?/gm, ' - ').replace(/"/g, '""');
       let cleanName = o.name.replace(/"/g, '""');
       let status = o.isFake ? "Hệ thống (Mẫu)" : "Mới đặt";
       
