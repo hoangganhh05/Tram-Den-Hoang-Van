@@ -580,6 +580,17 @@
         <p class="card-price">85.000đ <small>/ hộp 400g</small></p>
       </div>
     </div>
+    <div class="product-card fade-in-up">
+      <span class="card-badge" style="background: linear-gradient(135deg, #76c442, #2e7d32); color: white;">🌿 Trứ Danh</span>
+      <div class="card-img-wrap">
+        <img src="muoi.jpg" alt="Trám đen muối truyền thống" />
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">🫙 Trám Đen Muối ATK II</h3>
+        <p class="card-desc">Sản phẩm đặc sản Hoàng Vân. Được muối tinh nguyên chất giữ trọn vị bùi béo tự nhiên. Dùng ăn trực tiếp hoặc chế biến.</p>
+        <p class="card-price">120.000đ <small>/ hộp 1,3kg</small></p>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -689,6 +700,12 @@
           <span class="prod-opt-emoji">🎁</span>
           <span class="prod-opt-label">Combo</span>
           <span class="prod-opt-price">Tiết kiệm</span>
+        </label>
+        <label class="prod-opt" id="opt4" for="prod4">
+          <input type="radio" name="product" id="prod4" value="Trám Đen Muối – 120.000đ/1.3kg" />
+          <span class="prod-opt-emoji">🫙</span>
+          <span class="prod-opt-label">Trám Muối</span>
+          <span class="prod-opt-price">120K</span>
         </label>
       </div>
 
@@ -815,7 +832,7 @@
   const API_URL = "https://script.google.com/macros/s/AKfycbx2OuPJkIRBvZj9-YXHmmulEplySwDmZLspUef-lyuSGD1ik7-BTL8Tun0MOBiLlDcq/exec";
 
   // ===== PRODUCT OPTIONS =====
-  const prices = { prod1: 50000, prod2: 85000, prod3: 125000 };
+  const prices = { prod1: 50000, prod2: 85000, prod3: 125000, prod4: 120000 };
   let selectedProd = 'prod1';
   let qty = 1;
 
