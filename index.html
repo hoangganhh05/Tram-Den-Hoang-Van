@@ -1057,8 +1057,18 @@
     { name: "Chị Ngọc T.", prod: "Trám Đen Kho Thịt Sẵn", time: "Vài giây trước" },
     { name: "Anh Minh Đức", prod: "2kg Trám Đen Tươi", time: "1 phút trước" },
     { name: "Cô Hương Lan", prod: "Trám Đen Muối hộp", time: "Vừa xong" },
+    { name: "Chị Thanh Hà", prod: "1kg Trám Đen Tươi", time: "Vài giây trước" },
     { name: "Anh Quang Thái", prod: "Combo Tiết kiệm", time: "Vài giây trước" },
-    { name: "Chị Mai Hoa", prod: "Trám Đen Kho Thịt Sẵn", time: "2 phút trước" }
+    { name: "Bác Hưng", prod: "Trám Đen Muối hộp", time: "2 phút trước" },
+    { name: "Chị Mai Hoa", prod: "Trám Đen Kho Thịt Sẵn", time: "Vừa xong" },
+    { name: "Em Linh Chi", prod: "1kg Trám Đen Tươi", time: "1 phút trước" },
+    { name: "Anh Tuấn Anh", prod: "Combo Tiết kiệm", time: "Vài giây trước" },
+    { name: "Cô Thuỷ", prod: "Trám Đen Kho Thịt Sẵn", time: "Vừa xong" },
+    { name: "Chú Hoà", prod: "5kg Trám Đen Tươi", time: "Vài giây trước" },
+    { name: "Chị Diễm Thúy", prod: "Combo Tiết kiệm", time: "30 giây trước" },
+    { name: "Anh Bảo Quân", prod: "Trám Đen Kho Thịt Sẵn", time: "Vừa xong" },
+    { name: "Bác Ngọc Ánh", prod: "Trám Đen Muối hộp", time: "Vài giây trước" },
+    { name: "Chị Kim Liên", prod: "2kg Trám Đen Tươi", time: "1 phút trước" }
   ];
 
   let fakeIndex = 0;
@@ -1066,6 +1076,9 @@
   const fName = document.getElementById('fakeName');
   const fProd = document.getElementById('fakeProduct');
   const fTime = document.getElementById('fakeTime');
+
+  // Xáo trộn mảng ngẫu nhiên để trông thật hơn mỗi lần vào trang
+  fakeData.sort(() => Math.random() - 0.5);
 
   function showFakeNotif() {
     const data = fakeData[fakeIndex];
@@ -1081,11 +1094,11 @@
     }, 4000);
   }
 
+  // Bắt đầu ngay sau 2 giây, rồi lặp lại sau mỗi 5 giây
   setTimeout(function loop() {
     showFakeNotif();
-    const nextTime = Math.random() * 8000 + 12000;
-    setTimeout(loop, nextTime);
-  }, 3000);
+    setTimeout(loop, 5000);
+  }, 2000);
 </script>
 </body>
 </html>
