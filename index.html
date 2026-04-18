@@ -572,7 +572,7 @@
     <div class="product-card fade-in-up">
       <span class="card-badge">⭐ Đặc Sản</span>
       <div class="card-img-wrap">
-        <img src="cooked.png" alt="Trám đen kho thịt món ăn truyền thống Việt Nam" />
+        <img src="Tram-kho.jpg" alt="Trám đen kho thịt món ăn truyền thống Việt Nam" />
       </div>
       <div class="card-body">
         <h3 class="card-title">🍲 Trám Đen Kho Thịt Sẵn</h3>
@@ -991,6 +991,101 @@
 
   // Initialize data in localStorage if empty so admin page can read it
   loadOrders();
+</script>
+
+<!-- ===== FAKE NOTIFICATION ===== -->
+<style>
+  .fake-notif {
+    position: fixed;
+    bottom: 80px;
+    left: 20px;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border-left: 4px solid var(--green-neon);
+    padding: 12px 16px;
+    border-radius: var(--radius-sm);
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 999;
+    transform: translateX(-150%);
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.5s ease;
+    opacity: 0;
+    max-width: 300px;
+  }
+  .fake-notif.show {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .fake-icon {
+    font-size: 1.5rem;
+  }
+  .fake-text {
+    font-size: 0.85rem;
+    color: var(--text-dark);
+    line-height: 1.4;
+  }
+  .fake-text strong {
+    color: var(--green-mid);
+  }
+  .fake-time {
+    font-size: 0.7rem;
+    color: #888;
+    margin-top: 2px;
+    display: block;
+  }
+  @media (max-width: 600px) {
+    .fake-notif {
+      bottom: 70px;
+      left: 10px;
+      right: 10px;
+      max-width: none;
+    }
+  }
+</style>
+<div class="fake-notif" id="fakeNotif">
+  <div class="fake-icon">🛒</div>
+  <div class="fake-text">
+    <strong id="fakeName">Nguyễn Văn A</strong> vừa đặt mua <br/>
+    <span id="fakeProduct" style="font-weight:600;">Trám Đen Tươi nguyên quả</span>
+    <span class="fake-time" id="fakeTime">Vài giây trước</span>
+  </div>
+</div>
+<script>
+  const fakeData = [
+    { name: "Chị Ngọc T.", prod: "Trám Đen Kho Thịt Sẵn", time: "Vài giây trước" },
+    { name: "Anh Minh Đức", prod: "2kg Trám Đen Tươi", time: "1 phút trước" },
+    { name: "Cô Hương Lan", prod: "Trám Đen Muối hộp", time: "Vừa xong" },
+    { name: "Anh Quang Thái", prod: "Combo Tiết kiệm", time: "Vài giây trước" },
+    { name: "Chị Mai Hoa", prod: "Trám Đen Kho Thịt Sẵn", time: "2 phút trước" }
+  ];
+
+  let fakeIndex = 0;
+  const fakeNotif = document.getElementById('fakeNotif');
+  const fName = document.getElementById('fakeName');
+  const fProd = document.getElementById('fakeProduct');
+  const fTime = document.getElementById('fakeTime');
+
+  function showFakeNotif() {
+    const data = fakeData[fakeIndex];
+    fName.innerText = data.name;
+    fProd.innerText = data.prod;
+    fTime.innerText = data.time;
+    
+    fakeNotif.classList.add('show');
+    
+    setTimeout(() => {
+      fakeNotif.classList.remove('show');
+      fakeIndex = (fakeIndex + 1) % fakeData.length;
+    }, 4000);
+  }
+
+  setTimeout(function loop() {
+    showFakeNotif();
+    const nextTime = Math.random() * 8000 + 12000;
+    setTimeout(loop, nextTime);
+  }, 3000);
 </script>
 </body>
 </html>
