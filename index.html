@@ -1088,16 +1088,19 @@
     
     fakeNotif.classList.add('show');
     
+    // Ẩn popup sau 4 giây
     setTimeout(() => {
       fakeNotif.classList.remove('show');
       fakeIndex = (fakeIndex + 1) % fakeData.length;
+      
+      // Đợi đúng 5 giây (khoảng cách tàng hình) rồi gọi cái tiếp theo
+      setTimeout(showFakeNotif, 5000);
     }, 4000);
   }
 
-  // Bắt đầu ngay sau 2 giây, rồi lặp lại sau mỗi 5 giây
-  setTimeout(function loop() {
+  // Khởi động hiện cái đầu tiên sau 2 giây vào web
+  setTimeout(() => {
     showFakeNotif();
-    setTimeout(loop, 5000);
   }, 2000);
 </script>
 </body>
